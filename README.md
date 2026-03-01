@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Credit Risk Machine Learning System
 
 This project implements an end-to-end credit scoring pipeline with professional monitoring and explainability.
@@ -29,3 +30,7 @@ Install requirements: pip install pandas scikit-learn mlflow flask shap joblib s
 Run python main.py to train the model.
 
 Uncomment app.run() in the bottom of main.py to start the inference server.
+=======
+# Credit_risk_ml_modeling
+Credit risk modeling predicts the probability that a borrower will default on a loan. Banks use statistical techniques and machine learning on customer data like income, credit history, and debt ratio to build models that automate lending decisions, minimize losses, and meet regulatory requirements.
+>>>>>>> 4ea7639a9c0a834147c96b08b80337d8294d7748

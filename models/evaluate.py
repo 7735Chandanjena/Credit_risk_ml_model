@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Jan 18 13:37:37 2025
+Created on San 21:22:19 2026
 
-@author: mjayant
+@author: jenac
 """
+
 
 import pandas as pd
 import scipy.stats as stats
