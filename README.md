@@ -12,8 +12,6 @@ This project implements a production-grade credit scoring engine built on the HM
 ![Real-time Scoring](reports/realtime_scoring_form.png)
 ### drift analysis
 ![Model Monitoring](reports/drift_monitoring_dashboard.png)
-### EDA reports
-![EDA Analytics](reports/Screenshot_3.png)
 ### visualization dashboards
 ![EDA Visualizations](reports/eda_visualizations.png)
 ### exhaustive eda reports
@@ -30,52 +28,53 @@ Features: 12 input variables + 1 target (BAD)
 
 Format: CSV, comma-separated, header row included
 ## project structure
+```
 credit_risk_ml_system/
 │
-├── main.py                          # Default entry point — trains the stacking ensemble
-├── master_pipeline.py               # Runs all four model variants in sequence
-├── app.py                           # Flask API with full monitoring (port 5002)
+├── main.py                          # Default entry point
+├── master_pipeline.py               # Runs all four model variants
+├── app.py                           # Flask API with monitoring (port 5002)
 ├── app_nomonitoring.py              # Lightweight Flask API (port 5000)
-├── config.yaml                      # Central config — thresholds, paths, model settings
-├── requirements.txt                 # All dependencies pinned
+├── config.yaml                      # Central config
+├── requirements.txt                 # Dependencies
 │
 ├── data/
-│   ├── raw/hmeq.csv                 # Source data, 5,960 loan records
-│   └── processed/                   # Training baseline saved here for drift comparison
+│   ├── raw/hmeq.csv                 # Source data, 5,960 records
+│   └── processed/                   # Training baseline for drift
 │
 ├── features/
-│   └── feature_pipeline.py          # Six engineered features — same logic at train and serve
+│   └── feature_pipeline.py          # Six engineered features
 │
 ├── models/
-│   ├── train_ensemble.py            # Stacking: RF + GBM → Logistic meta-learner
+│   ├── train_ensemble.py            # Stacking: RF + GBM → LogReg
 │   ├── train_boosted.py             # Voting: RF + XGBoost
-│   ├── train_voting.py              # Voting: Decision Tree + RF
+│   ├── train_voting.py              # Voting: DecisionTree + RF
 │   ├── train_logistic.py            # Logistic Regression baseline
-│   └── evaluate.py                  # Gini + KS evaluation shared across all trainers
+│   └── evaluate.py                  # Gini + KS evaluation
 │
 ├── explainability/
-│   ├── shap_explainer.py            # Full SHAP with dimension-mismatch guard
-│   └── shap_explainer_simple.py     # Fallback for lighter deployments
+│   ├── shap_explainer.py            # Full SHAP explainer
+│   └── shap_explainer_simple.py     # Lightweight fallback
 │
 ├── services/
-│   └── scoring.py                   # Converts PD → credit score → risk band → decision
+│   └── scoring.py                   # PD → score → band → decision
 │
 ├── monitoring/
-│   ├── drift_analysis.py            # PSI and KS drift calculations
-│   ├── drift_scheduler.py           # Runs drift checks on a schedule
-│   └── performance.py               # Lightweight performance tracker
+│   ├── drift_analysis.py            # PSI and KS calculations
+│   ├── drift_scheduler.py           # Scheduled drift checks
+│   └── performance.py               # Performance tracker
 │
 ├── registry/
-│   └── registry.py                  # MLflow model registration and promotion logic
+│   └── registry.py                  # MLflow registration
 │
 ├── inference/
-│   └── inference.py                 # Loads artifact and exposes predict()
+│   └── inference.py                 # Loads model, exposes predict()
 │
 ├── artifacts/
 │   └── credit_risk_pipeline.pkl     # Serialized champion model
 │
 ├── logs/
-│   └── production_predictions.csv   # Every API call logged here for monitoring
+│   └── production_predictions.csv   # Every API call logged here
 │
 ├── reports/
 │   ├── realtime_scoring_form.png
@@ -85,7 +84,8 @@ credit_risk_ml_system/
 │   └── exhaustive_eda_visuals.png
 │
 └── ui/
-    └── index.html                   
+    └── index.html                   # Browser dashboard
+```                   
 
 ## Used tools and technology
 ## Tools & Technologies
