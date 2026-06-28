@@ -88,7 +88,7 @@ credit_risk_ml_system/
 ```                   
 
 ## Used tools and technology
-## Tools & Technologies
+
 
 | Category | Tool |
 |---|---|
